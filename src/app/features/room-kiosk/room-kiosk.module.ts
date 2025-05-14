@@ -6,11 +6,13 @@ import { SharedModule } from '../../shared/shared.module'; // Import SharedModul
 import { RoomKioskRoutingModule } from './room-kiosk-routing.module';
 import { RoomKioskComponent } from './room-kiosk.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 
 
 @NgModule({
   declarations: [
-    DashboardPageComponent
+    DashboardPageComponent,
+    HeroSectionComponent
   ],
   imports: [
     CommonModule,
