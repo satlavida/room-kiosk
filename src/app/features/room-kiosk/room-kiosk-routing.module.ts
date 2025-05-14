@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoomKioskComponent } from './room-kiosk.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
-const routes: Routes = [{ path: '', component: RoomKioskComponent }];
+const routes: Routes = [{ path: '', component: DashboardPageComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
