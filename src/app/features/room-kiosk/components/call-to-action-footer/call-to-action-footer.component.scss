@@ -1,0 +1,18 @@
+// src/app/features/room-kiosk/components/call-to-action-footer/call-to-action-footer.component.scss
+.cta-footer-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9; // Light background for separation
+  border-top: 1px solid #e0e0e0;
+  margin-top: 30px; // Space above this section
+}
+
+.cta-button {
+  padding: 12px 30px;
+  font-size: 1.1em;
+  min-width: 250px; // Ensure button has a decent width
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}

@@ -12,6 +12,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
 import { AnalyticsDisplayComponent } from './components/analytics-display/analytics-display.component';
 import { RoomDetailComponent } from './pages/room-detail/room-detail.component';
 import { QuickActionsPanelComponent } from './components/quick-actions-panel/quick-actions-panel.component';
+import { CallToActionFooterComponent } from './components/call-to-action-footer/call-to-action-footer.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { QuickActionsPanelComponent } from './components/quick-actions-panel/qui
     AnalyticsDisplayComponent,
     RoomDetailComponent,
     QuickActionsPanelComponent,
+    CallToActionFooterComponent,
   ],
   imports: [
     CommonModule,
