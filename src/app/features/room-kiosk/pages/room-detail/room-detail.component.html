@@ -1,0 +1,31 @@
+<div *ngIf="room; else notFound" class="room-detail-container">
+  <button mat-stroked-button color="primary" (click)="goBack()" style="margin-bottom: 20px;">
+    <mat-icon>arrow_back</mat-icon>
+    Back to Dashboard
+  </button>
+  <mat-card>
+    <mat-card-header>
+      <mat-icon mat-card-avatar>meeting_room</mat-icon>
+      <mat-card-title>{{ room.name }}</mat-card-title>
+      <mat-card-subtitle>
+        {{ room.building }} - Floor {{ room.floor }} | Capacity: {{ room.capacity }} | Status: <span [ngClass]="'status-' + room.status">{{ room.status | titlecase }}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image *ngIf="room.imageUrl" [src]="room.imageUrl" [alt]="room.name" style="max-height: 300px; object-fit: cover;">
+    <mat-card-content>
+      <h3>Description</h3>
+      <p>{{ room.description }}</p>
+      <h3 *ngIf="room.amenities && room.amenities.length > 0">Amenities</h3>
+      <mat-chip-listbox *ngIf="room.amenities && room.amenities.length > 0">
+        <mat-chip *ngFor="let amenity of room.amenities">{{ amenity }}</mat-chip>
+      </mat-chip-listbox>
+      </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #notFound>
+  <p>Room with ID '{{ roomId }}' not found.</p>
+  <button mat-stroked-button color="primary" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    Back to Dashboard
+  </button>
+</ng-template>

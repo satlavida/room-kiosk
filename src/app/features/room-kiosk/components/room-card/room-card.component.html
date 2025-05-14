@@ -26,6 +26,6 @@
       </mat-icon>
     </span>
     <button mat-flat-button color="primary" [disabled]="room?.status !== 'available'">Book Now</button>
-    <button mat-button>Details</button>
+    <button mat-button [routerLink]="['/room', room?.id]">Details</button>
   </mat-card-actions>
 </mat-card>
