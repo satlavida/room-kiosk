@@ -3,6 +3,7 @@
   position: relative sticky; // Makes header stick to top
   top: 0;
   z-index: 1000; // Ensures header is above other content
+  min-height: fit-content;
 }
 
 .spacer {
@@ -10,11 +11,25 @@
 }
 
 .search-container {
-  margin: 0 16px; // Add some spacing around search
+  margin-top: 40px; // Add some spacing around search
+  margin-left: 20px;
 }
 
 .search-form-field {
-  width: 300px; // Adjust as needed
+  width: 300px; // Default width for desktop
+
+  // Responsive widths
+  @media (max-width: 600px) {
+    width: 100%;
+    min-width: 0;
+  }
+  @media (min-width: 601px) and (max-width: 960px) {
+    width: 200px;
+  }
+  @media (min-width: 200px) and (max-width: 600px) {
+    width: 150px;
+  }
+
   // Override default styles if needed
   ::ng-deep .mat-form-field-wrapper { // Use ::ng-deep with caution, prefer specific selectors
     padding-bottom: 0;

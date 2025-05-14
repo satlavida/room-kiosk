@@ -1,25 +1,46 @@
-// src/app/core/components/layout/layout.component.scss
 .layout-container {
-  height: 100vh; // Full viewport height
-  display: flex; // Enable Flexbox for the container itself if needed, though mat-sidenav-container handles its children.
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .sidenav {
-  width: 250px; // Adjust as needed
-  // Add background, box-shadow, etc. for custom styling
-  background-color: #f5f5f5; // Example background
+  width: 250px;
+  background-color: #f5f5f5;
   border-right: 1px solid #e0e0e0;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    min-height: 56px; // Example mobile height
+  }
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
+  flex: 1 1 0%;
+  min-width: 0;
   height: 100%;
+
+  @media (max-width: 768px) {
+    min-height: 0;
+  }
 }
 
 .main-content {
-  flex-grow: 1; // Takes up remaining vertical space
+  flex-grow: 1;
   padding: 20px;
-  overflow-y: auto; // Allow scrolling for content that overflows
-  // background-color: #fafafa; // Example background for content area
+  overflow-y: auto;
+  min-width: 0;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
 }
