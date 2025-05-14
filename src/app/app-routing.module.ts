@@ -1,7 +1,17 @@
+// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from './core/components/layout/layout.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: LayoutComponent, // Use LayoutComponent for the root path
+    children: [
+    ]
+  },
+  // { path: '**', redirectTo: '' } // Optional: Wildcard route for 404 or redirect
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

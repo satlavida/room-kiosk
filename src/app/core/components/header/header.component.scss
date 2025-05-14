@@ -1,0 +1,26 @@
+// src/app/core/components/header/header.component.scss
+.app-header {
+  position: relative sticky; // Makes header stick to top
+  top: 0;
+  z-index: 1000; // Ensures header is above other content
+}
+
+.spacer {
+  flex: 1 1 auto; // Fills available space
+}
+
+.search-container {
+  margin: 0 16px; // Add some spacing around search
+}
+
+.search-form-field {
+  width: 300px; // Adjust as needed
+  // Override default styles if needed
+  ::ng-deep .mat-form-field-wrapper { // Use ::ng-deep with caution, prefer specific selectors
+    padding-bottom: 0;
+  }
+  ::ng-deep .mat-form-field-infix {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}

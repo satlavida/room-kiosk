@@ -1,0 +1,47 @@
+// src/app/core/components/sidebar/sidebar.component.scss
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Ensure sidebar itself takes full height of its container
+}
+
+.sidebar-header {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+  .logo {
+    width: 60px; // Adjust as needed
+    height: 60px; // Adjust as needed
+    margin-bottom: 8px;
+    border-radius: 50%; // if it's a circular logo
+    background-color: #ccc; // Placeholder background
+  }
+
+  h3 {
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+mat-nav-list {
+  flex-grow: 1; // Allows the list to take available space
+  padding-top: 0;
+}
+
+.active-link {
+  background-color: rgba(0, 0, 0, 0.08); // Example active link style
+  color: var(--mat-primary-contrast-default-color); // Use theme variable if possible
+  font-weight: bold;
+
+  mat-icon {
+    color: var(--mat-primary-contrast-default-color);
+  }
+}
+
+.sidebar-footer {
+  padding: 8px 0;
+  // position: sticky; // if you want it at the bottom always
+  // bottom: 0;
+  // background-color: inherit; // to match sidebar background
+}

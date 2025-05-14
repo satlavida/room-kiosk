@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// src/app/core/components/header/header.component.ts
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Output() toggleSidenav = new EventEmitter<void>();
 
+  onToggleSidenav(): void {
+    this.toggleSidenav.emit();
+  }
 }
