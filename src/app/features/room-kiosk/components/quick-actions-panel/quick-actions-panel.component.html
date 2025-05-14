@@ -1,0 +1,36 @@
+<mat-card class="quick-actions-card">
+  <mat-card-header>
+    <mat-card-title>Quick Actions</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-action-list class="actions-list">
+      <button mat-list-item (click)="onActionClick('view_list')">
+        <mat-icon matListItemIcon>view_list</mat-icon>
+        <span matListItemTitle>All Rooms</span>
+        <span matListItemLine class="action-description">View full room directory</span>
+      </button>
+      <button mat-list-item (click)="onActionClick('star')">
+        <mat-icon matListItemIcon>star_outline</mat-icon> <span matListItemTitle>My Bookings</span>
+        <span matListItemLine class="action-description">Check your upcoming reservations</span>
+      </button>
+      <button mat-list-item (click)="onActionClick('explore')">
+        <mat-icon matListItemIcon>explore</mat-icon>
+        <span matListItemTitle>Explore Features</span>
+        <span matListItemLine class="action-description">Discover new kiosk functionalities</span>
+      </button>
+      <button mat-list-item (click)="onActionClick('notifications')">
+        <mat-icon matListItemIcon>notifications_none</mat-icon> <span matListItemTitle>Notifications</span>
+        <span matListItemLine class="action-description">Recent alerts and updates</span>
+      </button>
+      <button mat-list-item (click)="onActionClick('help_outline')">
+        <mat-icon matListItemIcon>help_outline</mat-icon>
+        <span matListItemTitle>Help & Support</span>
+        <span matListItemLine class="action-description">Get assistance or report issues</span>
+      </button>
+      <button mat-list-item (click)="onActionClick('lightbulb')">
+        <mat-icon matListItemIcon>lightbulb_outline</mat-icon> <span matListItemTitle>Tips & Tricks</span>
+        <span matListItemLine class="action-description">Optimize your room booking experience</span>
+      </button>
+    </mat-action-list>
+  </mat-card-content>
+</mat-card>

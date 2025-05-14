@@ -1,8 +1,15 @@
 <div style="padding: 20px; text-align: center;">
   <h1>Welcome to the Room Kiosk Dashboard!</h1>
 
-    <app-hero-section></app-hero-section>
+  <app-hero-section></app-hero-section>
 
-    <app-room-list></app-room-list>
-    <app-analytics-display></app-analytics-display>
+  <app-room-list></app-room-list>
+  <div class="dashboard-middle-section">
+    <div class="analytics-column">
+      <app-analytics-display></app-analytics-display>
+    </div>
+    <div class="quick-actions-column">
+      <app-quick-actions-panel></app-quick-actions-panel>
+    </div>
+  </div>
 </div>

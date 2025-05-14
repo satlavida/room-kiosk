@@ -11,6 +11,7 @@ import { RoomCardComponent } from './components/room-card/room-card.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
 import { AnalyticsDisplayComponent } from './components/analytics-display/analytics-display.component';
 import { RoomDetailComponent } from './pages/room-detail/room-detail.component';
+import { QuickActionsPanelComponent } from './components/quick-actions-panel/quick-actions-panel.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RoomDetailComponent } from './pages/room-detail/room-detail.component';
     RoomListComponent,
     AnalyticsDisplayComponent,
     RoomDetailComponent,
+    QuickActionsPanelComponent,
   ],
   imports: [
     CommonModule,

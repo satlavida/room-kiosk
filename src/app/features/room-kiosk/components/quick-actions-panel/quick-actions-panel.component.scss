@@ -1,0 +1,34 @@
+// src/app/features/room-kiosk/components/quick-actions-panel/quick-actions-panel.component.scss
+.quick-actions-card {
+  // No specific card styling needed if it's just a container,
+  // unless you want a border, specific background, etc.
+  // margin-top: 20px; // If it's stacked below analytics
+}
+
+mat-card-header {
+  padding-bottom: 8px; // Reduce default padding if needed
+}
+mat-card-title{
+    font-size: 1.2em; // Adjust title size
+}
+
+.actions-list {
+  padding-top: 0; // Remove default padding from mat-action-list if desired
+
+  .mat-mdc-list-item { // Targeting the list item specifically
+    // height: auto; // Allow items to grow based on content
+    // padding-top: 12px;
+    // padding-bottom: 12px;
+
+    .mat-icon { // Targeting mat-icon within list item
+      margin-right: 12px; // Space between icon and text
+      color: var(--mat-primary-main-color, #3f51b5); // Use theme color
+    }
+  }
+}
+
+.action-description {
+  font-size: 0.8em;
+  color: #757575; // Greyish color for descriptions
+  white-space: normal; // Allow description to wrap
+}

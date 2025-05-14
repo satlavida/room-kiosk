@@ -1,4 +1,25 @@
-.dashboard-content-placeholder {
-  margin-top: 20px;
-  text-align: center;
+// src/app/features/room-kiosk/pages/dashboard-page/dashboard-page.component.scss
+.dashboard-middle-section {
+  display: flex;
+  flex-wrap: wrap; // Allow wrapping on smaller screens
+  gap: 20px; // Space between the columns
+  margin-top: 20px; // Space above this section
+}
+
+.analytics-column {
+  flex: 2; // Analytics takes up more space (e.g., 2/3)
+  min-width: 300px; // Minimum width before wrapping or shrinking
+}
+
+.quick-actions-column {
+  flex: 1; // Quick actions take up less space (e.g., 1/3)
+  min-width: 280px; // Minimum width
+}
+
+// Responsive adjustments for the middle section
+@media (max-width: 992px) { // For tablets or smaller screens where side-by-side might be too cramped
+  .analytics-column,
+  .quick-actions-column {
+    flex-basis: 100%; // Stack them on smaller screens
+  }
 }
