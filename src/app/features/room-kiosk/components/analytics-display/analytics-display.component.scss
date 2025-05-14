@@ -1,0 +1,82 @@
+// src/app/features/room-kiosk/components/analytics-display/analytics-display.component.scss
+.analytics-card {
+  margin-top: 20px;
+}
+
+mat-card-subtitle {
+  display: flex;
+  align-items: center;
+}
+
+.percentage-change {
+  font-weight: bold;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+
+  &.positive {
+    color: #4caf50; // Green for positive
+    background-color: #e8f5e9;
+  }
+  &.negative {
+    color: #f44336; // Red for negative
+    background-color: #ffebee;
+  }
+}
+
+.chart-container {
+  padding: 20px 0;
+}
+
+.chart {
+  display: flex;
+  justify-content: space-around; // Distribute bars evenly
+  align-items: flex-end; // Align bars to the bottom
+  height: 200px; // Fixed height for the chart area
+  border-bottom: 2px solid #e0e0e0; // X-axis line
+  padding-bottom: 5px; // Space for labels below axis
+  position: relative;
+}
+
+.chart-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; // Allow containers to take up space
+  position: relative; // For potential line chart overlay later
+}
+
+.chart-bar {
+  width: 60%; // Width of each bar relative to its container
+  max-width: 40px; // Max width for a bar
+  background-color: #3f51b5; // Primary color for bars
+  border-radius: 4px 4px 0 0; // Rounded top corners
+  transition: height 0.5s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #303f9f; // Darker on hover
+  }
+}
+
+// Example: Highlight a specific bar (e.g., current month as in reference)
+// Assuming the 5th item (index 4) is 'May' like in the reference image (blue bar)
+.chart-bar-container:nth-child(5) .chart-bar {
+   background-color: #2196f3; // A different color for a highlighted bar
+}
+
+
+.chart-label {
+  font-size: 0.8em;
+  color: #757575;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.chart-description {
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+  margin-top: 15px;
+}

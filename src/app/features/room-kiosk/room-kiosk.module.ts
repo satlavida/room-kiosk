@@ -9,6 +9,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 import { RoomCardComponent } from './components/room-card/room-card.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { AnalyticsDisplayComponent } from './components/analytics-display/analytics-display.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     DashboardPageComponent,
     HeroSectionComponent,
     RoomCardComponent,
-    RoomListComponent
+    RoomListComponent,
+    AnalyticsDisplayComponent
   ],
   imports: [
     CommonModule,

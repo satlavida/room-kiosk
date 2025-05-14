@@ -1,0 +1,21 @@
+<mat-card class="analytics-card">
+  <mat-card-header>
+    <mat-card-title>Room Usage Trends</mat-card-title>
+    <mat-card-subtitle>
+      Compare with Last Month: <span class="percentage-change positive">+{{ mockPercentageChange }}%</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="chart-container">
+      <div class="chart">
+        <div class="chart-bar-container" *ngFor="let item of mockChartData; let i = index">
+          <div class="chart-bar" [style.height.%]="item.value" [matTooltip]="item.label + ': ' + item.rawValue"> {{ item.value }} </div>
+          <span class="chart-label">{{ item.label }}</span>
+        </div>
+      </div>
+    </div>
+    <p class="chart-description">
+      Monthly booking frequency for primary room types.
+    </p>
+  </mat-card-content>
+</mat-card>
