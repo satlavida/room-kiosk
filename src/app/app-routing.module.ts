@@ -10,6 +10,7 @@ const routes: Routes = [
     children: [
     ]
   },
+  { path: '', loadChildren: () => import('./features/room-kiosk/room-kiosk.module').then(m => m.RoomKioskModule) },
   // { path: '**', redirectTo: '' } // Optional: Wildcard route for 404 or redirect
 ];
 
