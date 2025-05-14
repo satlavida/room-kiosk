@@ -4,6 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+
 import { LayoutComponent } from './core/components/layout/layout.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
@@ -18,7 +22,9 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

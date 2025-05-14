@@ -1,1 +1,13 @@
-<p>layout works!</p>
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-container">
+    <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
+
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
