@@ -9,7 +9,7 @@
     <div class="chart-container">
       <div class="chart">
         <div class="chart-bar-container" *ngFor="let item of mockChartData; let i = index">
-          <div class="chart-bar" [style.height.%]="item.value" [matTooltip]="item.label + ': ' + item.rawValue"> {{ item.value }} </div>
+          <div class="chart-bar" [style.height]="(item.value / 100) * 180 + 'px'" [matTooltip]="item.label + ': ' + item.rawValue"> </div>
           <span class="chart-label">{{ item.label }}</span>
         </div>
       </div>
