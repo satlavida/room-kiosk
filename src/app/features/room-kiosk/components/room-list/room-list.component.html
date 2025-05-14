@@ -1,0 +1,15 @@
+<div class="room-list-container">
+  <h2 class="list-title">Available Spaces</h2>
+  <div *ngIf="filteredRooms.length > 0; else noRooms" class="room-grid">
+    <div *ngFor="let room of filteredRooms" class="room-grid-item">
+      <app-room-card [room]="room"></app-room-card>
+    </div>
+  </div>
+
+  <ng-template #noRooms>
+    <div class="no-rooms-message">
+      <mat-icon>info</mat-icon>
+      <p>No rooms match your criteria or are currently available.</p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,31 @@
+<mat-card class="room-card" [ngClass]="'status-' + room?.status">
+  <mat-card-header>
+    <mat-icon mat-card-avatar class="room-icon">meeting_room</mat-icon> <mat-card-title>{{ room?.name }}</mat-card-title>
+    <mat-card-subtitle>
+      Capacity: {{ room?.capacity }} | {{ room?.building }} - Floor {{ room?.floor }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="room-description">{{ room?.description }}</p>
+    <div *ngIf="room?.amenities && room?.amenities!.length > 0" class="amenities-section">
+      <strong>Amenities:</strong>
+      <mat-chip-listbox aria-label="Room amenities">
+        <mat-chip *ngFor="let amenity of room?.amenities">{{ amenity }}</mat-chip>
+      </mat-chip-listbox>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <span class="status-indicator" [matTooltip]="'Status: ' + room?.status | titlecase">
+      <mat-icon
+        [ngClass]="{
+          'available': room?.status === 'available',
+          'occupied': room?.status === 'occupied',
+          'maintenance': room?.status === 'maintenance'
+        }">
+        {{ room?.status === 'available' ? 'check_circle' : (room?.status === 'occupied' ? 'lock' : 'build') }}
+      </mat-icon>
+    </span>
+    <button mat-flat-button color="primary" [disabled]="room?.status !== 'available'">Book Now</button>
+    <button mat-button>Details</button>
+  </mat-card-actions>
+</mat-card>
