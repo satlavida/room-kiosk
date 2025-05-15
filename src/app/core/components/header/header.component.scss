@@ -1,41 +1,251 @@
-// src/app/core/components/header/header.component.scss
 .app-header {
-  position: relative sticky; // Makes header stick to top
+  position: sticky;
   top: 0;
-  z-index: 1000; // Ensures header is above other content
-  min-height: fit-content;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  // Main toolbar styles
+  mat-toolbar {
+    padding: 0 16px;
+    min-height: 64px;
+    
+    // On smaller screens, reduce height slightly
+    @media (max-width: 768px) {
+      min-height: 56px;
+      padding: 0 8px;
+    }
+    
+    // Use flexbox for the three sections of the toolbar
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
-.spacer {
-  flex: 1 1 auto; // Fills available space
+// Left section of header
+.header-start {
+  display: flex;
+  align-items: center;
+  
+  .menu-toggle {
+    margin-right: 8px;
+  }
+  
+  .app-title-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    
+    .mobile-logo {
+      height: 32px;
+      width: 32px;
+      display: none;
+      
+      @media (max-width: 480px) {
+        display: block;
+      }
+    }
+    
+    .app-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      
+      @media (max-width: 480px) {
+        display: none; // Hide text on very small screens
+      }
+    }
+  }
 }
 
-.search-container {
-  margin-top: 40px; // Add some spacing around search
-  margin-left: 20px;
-}
-
-.search-form-field {
-  width: 300px; // Default width for desktop
-
-  // Responsive widths
-  @media (max-width: 600px) {
+// Center section of header
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  
+  .search-container {
     width: 100%;
-    min-width: 0;
+    max-width: 600px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      padding: 0 8px;
+      position: relative;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 0;
+      
+      &.expanded {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: inherit;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 8px;
+      }
+    }
+    
+    .search-toggle {
+      display: none;
+      
+      @media (max-width: 480px) {
+        display: block;
+      }
+    }
+    
+    .search-form-field {
+      width: 100%;
+      
+      // Remove extra spacing in Mat form field
+      ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
+      
+      // Fix search field height
+      ::ng-deep .mat-mdc-text-field-wrapper {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      
+      @media (max-width: 480px) {
+        &.hidden {
+          display: none;
+        }
+      }
+    }
   }
-  @media (min-width: 601px) and (max-width: 960px) {
-    width: 200px;
-  }
-  @media (min-width: 200px) and (max-width: 600px) {
-    width: 150px;
-  }
+}
 
-  // Override default styles if needed
-  ::ng-deep .mat-form-field-wrapper { // Use ::ng-deep with caution, prefer specific selectors
-    padding-bottom: 0;
+// Right section of header
+.header-end {
+  display: flex;
+  align-items: center;
+  
+  .action-icons {
+    display: flex;
+    align-items: center;
+    
+    @media (max-width: 480px) {
+      &.hidden {
+        display: none;
+      }
+    }
   }
-  ::ng-deep .mat-form-field-infix {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+  
+  .user-menu-button {
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// Menu customizations
+.menu-header {
+  padding: 16px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  .menu-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.user-header {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  
+  .user-info {
+    .user-name {
+      margin: 0 0 4px 0;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    
+    .user-email {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.empty-state {
+  padding: 24px 16px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+    opacity: 0.5;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+// Breadcrumb styles
+.breadcrumb-container {
+  background-color: white;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+  
+  .breadcrumbs {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .separator {
+      margin: 0 8px;
+    }
+    
+    .current {
+      color: rgba(0, 0, 0, 0.87);
+      font-weight: 500;
+    }
   }
 }

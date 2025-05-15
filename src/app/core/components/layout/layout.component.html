@@ -1,13 +1,26 @@
-<mat-sidenav-container class="layout-container">
-  <mat-sidenav #sidenav mode="side" opened class="sidenav">
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
+<div class="layout-wrapper">
+  <mat-sidenav-container class="layout-container">
+    <!-- Sidenav with two display modes based on screen size -->
+    <mat-sidenav #sidenav [mode]="isSmallScreen ? 'over' : 'side'" 
+                [opened]="!isSmallScreen" 
+                [disableClose]="!isSmallScreen"
+                class="sidenav">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
 
-  <mat-sidenav-content class="content-container">
-    <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
+    <mat-sidenav-content class="content-container">
+      <app-header [sidenav]="sidenav"></app-header>
 
-    <main class="main-content">
-      <router-outlet></router-outlet>
-    </main>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      <main class="main-content" [class.with-padding]="contentPadding">
+        <router-outlet></router-outlet>
+      </main>
+
+      <!-- Optional footer -->
+      <footer class="app-footer" *ngIf="showFooter">
+        <div class="footer-content">
+          <p>© 2025 Room Kiosk System. All rights reserved.</p>
+        </div>
+      </footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
