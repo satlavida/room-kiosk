@@ -2,7 +2,7 @@ export interface StatCard {
   title: string;
   value: string | number;
   icon: string;
-  percentChange?: number;
+  percentChange: number;
   color: 'primary' | 'accent' | 'warn' | 'info';
 }
 

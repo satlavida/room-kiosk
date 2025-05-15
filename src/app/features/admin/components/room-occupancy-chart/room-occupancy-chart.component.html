@@ -1,1 +1,31 @@
-<p>room-occupancy-chart works!</p>
+<mat-card class="occupancy-chart-card">
+  <div class="card-header">
+    <h2>Room Occupancy Rates</h2>
+    <div class="chart-actions">
+      <button mat-button [matMenuTriggerFor]="timeMenu">Last 30 Days</button>
+      <mat-menu #timeMenu="matMenu">
+        <button mat-menu-item>Last 7 Days</button>
+        <button mat-menu-item>Last 30 Days</button>
+        <button mat-menu-item>Last 90 Days</button>
+        <button mat-menu-item>This Year</button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <div class="chart-container">
+      <div class="occupancy-chart">
+        <!-- Horizontal bar chart visualization -->
+        <div class="chart-row" *ngFor="let item of occupancyData">
+          <div class="chart-label">{{ item.room }}</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar" [style.width.%]="item.occupancyRate">
+              <span class="bar-value">{{ item.occupancyRate }}%</span>
+            </div>
+          </div>
+          <div class="chart-value">{{ item.bookingsCount }} bookings</div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

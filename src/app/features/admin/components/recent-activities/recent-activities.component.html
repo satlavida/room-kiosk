@@ -1,1 +1,34 @@
-<p>recent-activities works!</p>
+<mat-card class="activities-card">
+  <div class="card-header">
+    <h2>Recent Activities</h2>
+    <button mat-button color="primary">View All</button>
+  </div>
+
+  <mat-card-content>
+    <div class="activity-timeline">
+      <div class="activity-item" *ngFor="let activity of activities; let last = last">
+        <div class="activity-icon" [ngClass]="getActivityIconClass(activity.type)">
+          <mat-icon>{{ getActivityIcon(activity.type) }}</mat-icon>
+        </div>
+        <div class="activity-connector" *ngIf="!last"></div>
+        
+        <div class="activity-content">
+          <div class="activity-header">
+            <span class="activity-user">{{ activity.user }}</span>
+            <span class="activity-time">{{ formatTimeAgo(activity.timestamp) }}</span>
+          </div>
+          <div class="activity-description">
+            {{ activity.description }}
+            <span *ngIf="activity.room" class="activity-room">in {{ activity.room }}</span>
+          </div>
+          <div class="activity-status" *ngIf="activity.status">
+            <mat-icon *ngIf="activity.status === 'completed'" class="status-completed">check_circle</mat-icon>
+            <mat-icon *ngIf="activity.status === 'pending'" class="status-pending">pending</mat-icon>
+            <mat-icon *ngIf="activity.status === 'cancelled'" class="status-cancelled">cancel</mat-icon>
+            <span>{{ activity.status }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
