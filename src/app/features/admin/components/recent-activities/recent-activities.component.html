@@ -6,11 +6,11 @@
 
   <mat-card-content>
     <div class="activity-timeline">
-      <div class="activity-item" *ngFor="let activity of activities; let last = last">
+      <div class="activity-item" *ngFor="let activity of activities; let isLast = last">
         <div class="activity-icon" [ngClass]="getActivityIconClass(activity.type)">
           <mat-icon>{{ getActivityIcon(activity.type) }}</mat-icon>
         </div>
-        <div class="activity-connector" *ngIf="!last"></div>
+        <div class="activity-connector" *ngIf="!isLast"></div>
         
         <div class="activity-content">
           <div class="activity-header">
@@ -28,6 +28,7 @@
             <span>{{ activity.status }}</span>
           </div>
         </div>
+        <mat-divider *ngIf="!isLast" class="activity-divider"></mat-divider>
       </div>
     </div>
   </mat-card-content>
