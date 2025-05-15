@@ -7,13 +7,23 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent, // Use LayoutComponent for the root path
-    children: [ {
-        path: '', // Changed from 'kiosk' to '' to make it the default child route
-        loadChildren: () => import('./features/room-kiosk/room-kiosk.module').then(m => m.RoomKioskModule),
-        data: { title: 'Room Kiosk Dashboard' } // Optional: for browser title or breadcrumbs
+    children: [{
+      path: '', // Changed from 'kiosk' to '' to make it the default child route
+      loadChildren: () => import('./features/room-kiosk/room-kiosk.module').then(m => m.RoomKioskModule),
+      data: { title: 'Room Kiosk Dashboard' } // Optional: for browser title or breadcrumbs
     }
     ]
   },
+  {
+    path: 'admin',
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule),
+        data: { title: 'Admin Dashboard' }
+      }]
+  }
   //{ path: '', loadChildren: () => import('./features/room-kiosk/room-kiosk.module').then(m => m.RoomKioskModule) },
   // { path: '**', redirectTo: '' } // Optional: Wildcard route for 404 or redirect
 ];

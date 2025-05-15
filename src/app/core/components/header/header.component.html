@@ -1,35 +1,126 @@
-<mat-toolbar color="primary" class="app-header">
-    <button mat-icon-button (click)="onToggleSidenav()">
+<header class="app-header">
+  <mat-toolbar color="primary">
+    <div class="header-start">
+      <!-- Menu toggle button that appears only on mobile -->
+      <button mat-icon-button class="menu-toggle" (click)="toggleSidenav()" aria-label="Toggle menu">
         <mat-icon>menu</mat-icon>
-    </button>
-    <span>Room Kiosk</span>
-
-    <span class="spacer"></span>
-
-    <div class="search-container">
-        <mat-form-field appearance="outline" class="search-form-field">
-            <mat-label>Search rooms</mat-label>
-            <input matInput placeholder="Enter room name, building..." (input)="onSearchInputChange($event)">
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+      </button>
+      
+      <!-- App title/logo - can be hidden on smaller screens if needed -->
+      <a routerLink="/" class="app-title-link">
+        <!-- Optional small logo for mobile -->
+        <img src="assets/images/logo-small.png" alt="Logo" class="mobile-logo">
+        
+        <!-- Title text that can be hidden on mobile if needed -->
+        <span class="app-title">Room Kiosk</span>
+      </a>
     </div>
-
-    <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User Profile">
-        <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #userMenu="matMenu">
-        <button mat-menu-item>
-            <mat-icon>person</mat-icon>
-            <span>Profile</span>
+    
+    <div class="header-center">
+      <!-- Search component with responsive handling -->
+      <div class="search-container" [class.expanded]="searchExpanded">
+        <button mat-icon-button class="search-toggle" (click)="toggleSearch()" aria-label="Toggle search" *ngIf="isSmallScreen">
+          <mat-icon>{{ searchExpanded ? 'close' : 'search' }}</mat-icon>
         </button>
-        <button mat-menu-item>
+        
+        <mat-form-field appearance="outline" class="search-form-field" [class.hidden]="isSmallScreen && !searchExpanded">
+          <mat-label>Search rooms</mat-label>
+          <input matInput placeholder="Enter room name, building..." (input)="onSearchInputChange($event)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div class="header-end">
+      <!-- Icons section with responsive behavior -->
+      <div class="action-icons" [class.hidden]="isSmallScreen && searchExpanded">
+        <!-- Notification icon with badge -->
+        <button mat-icon-button [matMenuTriggerFor]="notificationMenu" aria-label="Show notifications">
+          <mat-icon [matBadge]="notificationCount" [matBadgeHidden]="notificationCount === 0" matBadgeColor="accent">
+            notifications
+          </mat-icon>
+        </button>
+        
+        <mat-menu #notificationMenu="matMenu" class="notification-menu">
+          <div class="menu-header">
+            <h3 class="menu-title">Notifications</h3>
+            <button mat-button color="primary">Mark all as read</button>
+          </div>
+          
+          <mat-divider></mat-divider>
+          
+          <div class="empty-state" *ngIf="notificationCount === 0">
+            <mat-icon>notifications_none</mat-icon>
+            <p>No new notifications</p>
+          </div>
+          
+          <button mat-menu-item *ngFor="let notification of mockNotifications">
+            <mat-icon [color]="notification.read ? '' : 'accent'">{{ notification.icon }}</mat-icon>
+            <span>{{ notification.message }}</span>
+          </button>
+          
+          <mat-divider></mat-divider>
+          
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Notification Settings</span>
+          </button>
+        </mat-menu>
+      
+        <!-- User menu -->
+        <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu" class="user-menu-button">
+          <div class="user-avatar">
+            <span *ngIf="!userPhotoUrl">{{ userInitials }}</span>
+            <img *ngIf="userPhotoUrl" [src]="userPhotoUrl" alt="User photo">
+          </div>
+        </button>
+        
+        <mat-menu #userMenu="matMenu" class="user-menu">
+          <div class="menu-header user-header">
+            <div class="user-info">
+              <h3 class="user-name">{{ userName }}</h3>
+              <p class="user-email">{{ userEmail }}</p>
+            </div>
+          </div>
+          
+          <mat-divider></mat-divider>
+          
+          <button mat-menu-item routerLink="/profile">
+            <mat-icon>person</mat-icon>
+            <span>My Profile</span>
+          </button>
+          
+          <button mat-menu-item routerLink="/settings">
             <mat-icon>settings</mat-icon>
             <span>Settings</span>
-        </button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item>
+          </button>
+          
+          <button mat-menu-item routerLink="/help">
+            <mat-icon>help</mat-icon>
+            <span>Help & Support</span>
+          </button>
+          
+          <mat-divider></mat-divider>
+          
+          <button mat-menu-item (click)="onLogout()">
             <mat-icon>exit_to_app</mat-icon>
             <span>Logout</span>
-        </button>
-    </mat-menu>
-</mat-toolbar>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-toolbar>
+  
+  <!-- Optional: breadcrumb navigation below toolbar -->
+  <div class="breadcrumb-container" *ngIf="showBreadcrumbs">
+    <div class="breadcrumbs">
+      <a routerLink="/">Home</a>
+      <span class="separator">/</span>
+      <ng-container *ngFor="let crumb of breadcrumbs; let last = last">
+        <a [routerLink]="crumb.url" *ngIf="!last">{{ crumb.label }}</a>
+        <span class="separator" *ngIf="!last">/</span>
+        <span class="current" *ngIf="last">{{ crumb.label }}</span>
+      </ng-container>
+    </div>
+  </div>
+</header>

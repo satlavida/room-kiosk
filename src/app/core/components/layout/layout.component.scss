@@ -1,25 +1,83 @@
-// src/app/core/components/layout/layout.component.scss
+.layout-wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
+// Main container with full height
 .layout-container {
-  height: 100vh; // Full viewport height
-  display: flex; // Enable Flexbox for the container itself if needed, though mat-sidenav-container handles its children.
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+// Sidenav styling with better responsive handling
 .sidenav {
-  width: 250px; // Adjust as needed
-  // Add background, box-shadow, etc. for custom styling
-  background-color: #f5f5f5; // Example background
+  width: 250px; // Default width
   border-right: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  
+  // Use a box-shadow instead of border on mobile for better visual separation
+  @media (max-width: 768px) {
+    width: 280px; // Wider on mobile for better touch targets
+    border-right: none;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  }
+  
+  // Very small screens (e.g. small phones in portrait)
+  @media (max-width: 350px) {
+    width: 85vw; // Use viewport width for very small screens
+  }
 }
 
+// Content container with flexible layout
 .content-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
 }
 
+// Main content area with scroll handling
 .main-content {
-  flex-grow: 1; // Takes up remaining vertical space
-  padding: 20px;
-  overflow-y: auto; // Allow scrolling for content that overflows
-  // background-color: #fafafa; // Example background for content area
+  flex: 1;
+  overflow-y: auto;  // Allow scrolling
+  overflow-x: hidden; // Prevent horizontal scroll
+  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  position: relative;
+  
+  // Add padding by default
+  &.with-padding {
+    padding: 24px;
+    
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 12px;
+    }
+  }
+  
+  // Add a subtle transition for padding changes
+  transition: padding 0.2s ease;
+}
+
+// Optional footer styling
+.app-footer {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  padding: 16px 24px;
+  
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-content {
+    text-align: center;
+    color: #757575;
+  }
 }

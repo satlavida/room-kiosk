@@ -1,5 +1,5 @@
 <div class="sidebar-header">
-  <img src="assets/images/logo-placeholder.png" alt="App Logo" class="logo">
+  <img src="assets/images/logo.jpg" alt="App Logo" class="logo">
   <h3>Kiosk Menu</h3>
 </div>
 
@@ -8,10 +8,16 @@
     <mat-icon matListItemIcon>dashboard</mat-icon>
     <span matListItemTitle>Dashboard</span>
   </a>
-  <a mat-list-item routerLink="/kiosk-feature1" routerLinkActive="active-link"> <mat-icon matListItemIcon>explore</mat-icon>
+  <a mat-list-item routerLink="/kiosk-feature1" routerLinkActive="active-link">
+    <mat-icon matListItemIcon>explore</mat-icon>
     <span matListItemTitle>Explore Rooms</span>
   </a>
-  <a mat-list-item routerLink="/kiosk-settings" routerLinkActive="active-link"> <mat-icon matListItemIcon>settings</mat-icon>
+  <a mat-list-item routerLink="/admin" routerLinkActive="active-link">
+    <mat-icon matListItemIcon>admin_panel_settings</mat-icon>
+    <span matListItemTitle>Admin Dashboard</span>
+  </a>
+  <a mat-list-item routerLink="/kiosk-settings" routerLinkActive="active-link">
+    <mat-icon matListItemIcon>settings</mat-icon>
     <span matListItemTitle>Settings</span>
   </a>
 </mat-nav-list>

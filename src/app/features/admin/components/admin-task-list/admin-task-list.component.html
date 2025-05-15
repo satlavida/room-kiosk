@@ -1,0 +1,48 @@
+<mat-card class="task-list-card">
+  <div class="card-header">
+    <h2>Admin Tasks</h2>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>add</mat-icon>
+        <span>Add Task</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>check_circle</mat-icon>
+        <span>Mark All Complete</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>filter_list</mat-icon>
+        <span>Filter Tasks</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <mat-card-content>
+    <mat-selection-list class="task-list">
+      <mat-list-item *ngFor="let task of tasks" class="task-item" [ngClass]="{'completed': task.completed}">
+        <mat-checkbox 
+          matListItemIcon
+          [checked]="task.completed" 
+          (change)="toggleTaskComplete(task)">
+        </mat-checkbox>
+        
+        <div matListItemTitle class="task-title">{{ task.title }}</div>
+        <div matListItemLine class="task-description">{{ task.description }}</div>
+        
+        <div matListItemMeta class="task-meta">
+          <span class="priority-badge" [ngClass]="getPriorityClass(task.priority)">
+            {{ task.priority }}
+          </span>
+          <span class="due-date">{{ formatDueDate(task.dueDate) }}</span>
+        </div>
+      </mat-list-item>
+    </mat-selection-list>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <a mat-button color="primary">View All Tasks</a>
+  </mat-card-actions>
+</mat-card>
